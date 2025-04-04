@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
+import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.CANDeviceIDs;
@@ -32,6 +33,7 @@ public class SwerveSubsystem extends SubsystemBase {
   //private boolean sdsModuleTypeSet = false;
   private SDSModuleFactory sdsModuleFactory = new SDSModuleFactory();
   private SDSModuleInterface sdsModuleInterface = sdsModuleFactory.createSDSModule(SDSModuleType.kCurrent);
+  private Field2d m_field;
 
   // public void setSDSModuleType(int sdsModuleType) {
   //   if (sdsModuleTypeSet == false) {
@@ -112,6 +114,9 @@ public class SwerveSubsystem extends SubsystemBase {
               }
             })
         .start();
+
+    m_field = new Field2d();
+    SmartDashboard.putData("Field", m_field);
   }
 
   public void zeroHeading() {
@@ -175,6 +180,12 @@ public class SwerveSubsystem extends SubsystemBase {
       teamColorEntry.setBoolean(false);
     }
   }
+
+
+  public void simulationPeriodic() {
+    m_field.setRobotPose(getPose());
+  }
+
 
   public void stopModules() {
     frontLeft.stop();
