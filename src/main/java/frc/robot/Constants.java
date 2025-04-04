@@ -299,7 +299,7 @@ public final class Constants {
     public static final double CameraOffsets = 0.15;
 
     public static final double YoffsetsForCameras=0.15;
-    public static AprilTagFieldLayout fieldLayout = AprilTagFields.k2025Reefscape.loadAprilTagLayoutField();
+    public static AprilTagFieldLayout fieldLayout = AprilTagFields.k2025ReefscapeWelded.loadAprilTagLayoutField();
      public static final class FrontLeft{
        public static String name="Arducam_OV2311_USB_Camera (1)";
        public static Transform3d cameraposeFrontLeft = new Transform3d(new Translation3d(0,0,0),new Rotation3d(0,0,0));
